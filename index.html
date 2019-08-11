@@ -1,0 +1,115 @@
+
+<!doctype html>
+<html lang="en">
+    <head>
+    <meta charset="utf-8">
+    <meta name="viewport" content="width=device-width, user-scalable=no, initial-scale=1">
+        <!--[if IE]>
+          <meta http-equiv="X-UA-Compatible" content="IE=Edge,chrome=1">
+        <![endif]-->
+
+    <meta name="description" content="description tes">
+    <meta name="keywords" content="keywords tes">
+    <meta name="author" content="author tes">
+
+    <link rel="stylesheet" href="https://maxcdn.bootstrapcdn.com/bootstrap/4.0.0/css/bootstrap.min.css"
+    integrity="sha384-Gn5384xqQ1aoWXA+058RXPxPg6fy4IWvTNh0E263XmFcJlSAwiGgFAW/dAiS6JXm" crossorigin="anonymous">
+    <link rel="stylesheet" href="css/main.css">
+
+      
+
+    <title data-react-helmet="true">Space</title>
+        
+    <meta data-react-helmet="true" name="description" content="description tes"/>
+    <meta data-react-helmet="true" name="keywords" content="keywords tes"/>
+    <meta data-react-helmet="true" name="author" content="author tes"/>
+        
+    </head>
+    <body>
+        
+            
+   
+  <header class="header" id="header">
+        <div class="container">
+            <div class="row">
+                <nav class="nav">
+                    <div class="heads">
+                        <img src="image/logo.png" alt="I" class="logo">
+                    </div>
+               </nav>
+            </div>
+        </div>
+    </header>
+
+    <section class="reproduct" id="reproduct"> 
+       
+    </section> 
+
+    <section class="footer">
+        <div class="container">
+            <div class="row">
+                <div class="col-lg-12">
+                    <div class="info">
+                        <p> 
+                                Lorem ipsum dolor sit amet, consectetur adipisicing elit. 
+                            Repellat delectus dolor adipisci! Dolore consequatur unde 
+                            incidunt minima corporis culpa aliquid?
+                        </p>
+                    </div>
+                </div>
+            </div>
+        </div>
+    </section>
+
+    
+    </body>
+    <script type="module" src="js/main.js"></script>
+    <script type="module" src="js/block.js"></script>
+    <script type="module" src="js/video.js"></script>
+    <script src="js/jquery-3.4.1.min.js"></script>
+    <script>
+var anchors = [];
+var currentAnchor = -1;
+var isAnimating  = false;
+
+    $(function(){
+    
+    function updateAnchors() {
+        anchors = [];
+        $('.container').each(function(i, element){
+            anchors.push( $(element).offset().top );
+        });
+    }
+    
+    $('body').on('mousewheel', function(e){
+        e.preventDefault();
+        e.stopPropagation();
+        if( isAnimating ) {
+            return false;
+        }
+        isAnimating  = true;
+        
+        if( e.originalEvent.wheelDelta >= 0 ) {
+            currentAnchor--;
+        }else{
+            currentAnchor++;
+        }
+        if( currentAnchor > (anchors.length - 1) 
+           || currentAnchor < 0 ) {
+            currentAnchor = 0;
+        }
+        isAnimating  = true;
+        $('html, body').animate({
+            scrollTop: parseInt( anchors[currentAnchor] )
+        }, 500, 'swing', function(){
+            isAnimating  = false;
+        });
+    });
+
+    updateAnchors();   
+    
+});
+    </script>
+    
+</html>
+  
